@@ -1,8 +1,8 @@
 pipeline {
-    agent any
+    agent { label 'contrôleur' }
 
     environment {
-        KUBECONFIG = '/home/jenkins/.kube/config' // chemin vers le fichier config que tu as copié
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
 
     stages {
