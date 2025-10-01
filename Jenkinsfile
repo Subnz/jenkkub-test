@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        KUBECONFIG = '/var/lib/jenkins/.kube/config'
+        KUBECONFIG = '/var/lib/jenkins/.kube/config' // chemin vers ton config K8s
     }
 
     stages {
@@ -17,20 +17,20 @@ pipeline {
             steps {
                 echo 'Déploiement du pod Nginx'
                 sh '''
-                    cat <<EOF | kubectl apply -f -
-                    apiVersion: v1
-                    kind: Pod
-                    metadata:
-                      name: nginx-test
-                      labels:
-                        app: nginx-test
-                    spec:
-                      containers:
-                      - name: nginx
-                        image: nginx:alpine
-                        ports:
-                        - containerPort: 80
-                    EOF
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-test
+  labels:
+    app: nginx-test
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine
+    ports:
+    - containerPort: 80
+EOF
                 '''
             }
         }
