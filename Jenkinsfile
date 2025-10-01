@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'contrôleur' }
+    agent { any }
 
     environment {
         KUBECONFIG = '/var/lib/jenkins/.kube/config'
